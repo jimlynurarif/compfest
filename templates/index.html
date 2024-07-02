@@ -10,6 +10,11 @@
     <header>
         <h1>SEA Salon</h1>
         <p>Beauty and Elegance Redefined</p>
+        {% if session.get('user_id') %}
+        <form action="{{ url_for('logout') }}" method="post" style="display:inline;">
+            <button type="submit">Logout</button>
+        </form>
+        {% endif %}
     </header>
     <main>
         <section>
