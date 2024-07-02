@@ -50,6 +50,7 @@
                 <ul id="review-list"></ul>
             </div>
         </section>
+        {% if session.get('user_id') %}
         <section>
             <h2>Reservation</h2>
             <form action="/reserve" method="post">
@@ -65,6 +66,7 @@
                 <button type="submit">Reserve</button>
             </form>
         </section>
+        {% endif %}
     </main>
     <footer>
         <p>&copy; 2024 SEA Salon. All rights reserved.</p>

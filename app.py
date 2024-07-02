@@ -10,6 +10,7 @@ db = client['sea_salon']
 users_collection = db['users']
 reviews_collection = db['reviews']
 reservations_collection = db['reservations']
+services_collection = db['services']
 
 @app.route('/')
 def index():
@@ -60,10 +61,19 @@ def logout():
     session.pop('role', None)
     return redirect(url_for('login'))
 
-@app.route('/admin')
+@app.route('/admin', methods=['GET', 'POST'])
 def admin_dashboard():
     if 'role' in session and session['role'] == 'admin':
-        return render_template('admin.html')
+        if request.method == 'POST':
+            service_name = request.form['service_name']
+            duration = request.form['duration']
+            service = {
+                'service_name': service_name,
+                'duration': duration
+            }
+            services_collection.insert_one(service)
+            return redirect(url_for('admin_dashboard'))
+        return render_template('admin.html', services=services_collection.find())
     return redirect(url_for('login'))
 
 # Initialize the admin user
