@@ -64,17 +64,15 @@ footer p {
     color: #777;
 }
 
-#review-form {
+#review-form, #reservation-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-#review-form input,
-#review-form select,
-#review-form textarea,
-#review-form button {
+#review-form input, #review-form select, #review-form textarea,
+#reservation-form input, #reservation-form select, #reservation-form button {
     padding: 10px;
     font-size: 1em;
     border: 1px solid #ddd;
