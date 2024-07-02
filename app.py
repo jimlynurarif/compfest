@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongo', 27017)
 db = client['sea_salon']
 users_collection = db['users']
 reviews_collection = db['reviews']
@@ -109,4 +109,4 @@ if not users_collection.find_one({'email': admin_user['email']}):
     users_collection.insert_one(admin_user)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
