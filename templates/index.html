@@ -56,6 +56,12 @@
             <form action="/reserve" method="post">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="text" name="phone" placeholder="Active Phone Number" required>
+                <select name="branch" required>
+                    <option value="">Choose a Branch</option>
+                    {% for branch in branches %}
+                    <option value="{{ branch.name }}">{{ branch.name }} - {{ branch.location }}</option>
+                    {% endfor %}
+                </select>
                 <select name="service" required>
                     <option value="">Choose a Service</option>
                     <option value="Haircuts and Styling">Haircuts and Styling</option>

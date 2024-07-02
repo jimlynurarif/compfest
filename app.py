@@ -11,11 +11,13 @@ users_collection = db['users']
 reviews_collection = db['reviews']
 reservations_collection = db['reservations']
 services_collection = db['services']
+branches_collection = db['branches']
 
 @app.route('/')
 def index():
+    branches = list(branches_collection.find())
     if 'user_id' in session:
-        return render_template('index.html')
+        return render_template('index.html', branches=branches)
     return redirect(url_for('login'))
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -73,7 +75,26 @@ def admin_dashboard():
             }
             services_collection.insert_one(service)
             return redirect(url_for('admin_dashboard'))
-        return render_template('admin.html', services=services_collection.find())
+        services = list(services_collection.find())
+        branches = list(branches_collection.find())
+        return render_template('admin.html', services=services, branches=branches)
+    return redirect(url_for('login'))
+
+@app.route('/add_branch', methods=['POST'])
+def add_branch():
+    if 'role' in session and session['role'] == 'admin':
+        branch_name = request.form['branch_name']
+        branch_location = request.form['branch_location']
+        opening_time = request.form['opening_time']
+        closing_time = request.form['closing_time']
+        branch = {
+            'name': branch_name,
+            'location': branch_location,
+            'opening_time': opening_time,
+            'closing_time': closing_time
+        }
+        branches_collection.insert_one(branch)
+        return redirect(url_for('admin_dashboard'))
     return redirect(url_for('login'))
 
 # Initialize the admin user

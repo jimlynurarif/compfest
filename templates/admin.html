@@ -27,6 +27,24 @@
                 {% endfor %}
             </ul>
         </section>
+        <section>
+            <h2>Add New Branch</h2>
+            <form action="{{ url_for('add_branch') }}" method="post">
+                <input type="text" name="branch_name" placeholder="Branch Name" required>
+                <input type="text" name="branch_location" placeholder="Branch Location" required>
+                <input type="time" name="opening_time" placeholder="Opening Time" required>
+                <input type="time" name="closing_time" placeholder="Closing Time" required>
+                <button type="submit">Add Branch</button>
+            </form>
+        </section>
+        <section>
+            <h2>Existing Branches</h2>
+            <ul>
+                {% for branch in branches %}
+                <li>{{ branch.name }} - {{ branch.location }} ({{ branch.opening_time }} - {{ branch.closing_time }})</li>
+                {% endfor %}
+            </ul>
+        </section>
     </main>
 </body>
 </html>
