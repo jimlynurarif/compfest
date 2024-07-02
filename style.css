@@ -64,3 +64,40 @@ footer p {
     color: #777;
 }
 
+#review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#review-form input,
+#review-form select,
+#review-form textarea,
+#review-form button {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#reviews {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#review-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#review-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#review-list li:last-child {
+    border-bottom: none;
+}

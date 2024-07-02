@@ -25,9 +25,30 @@
             <p>Thomas: 08123456789</p>
             <p>Sekar: 08164829372</p>
         </section>
+        <section>
+            <h2>Customer Reviews</h2>
+            <form id="review-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <select id="rating" required>
+                    <option value="">Rate Us</option>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+                <textarea id="comment" placeholder="Leave a comment" required></textarea>
+                <button type="submit">Submit Review</button>
+            </form>
+            <div id="reviews">
+                <h3>All Reviews</h3>
+                <ul id="review-list"></ul>
+            </div>
+        </section>
     </main>
     <footer>
         <p>&copy; 2024 SEA Salon. All rights reserved.</p>
     </footer>
+    <script src="scripts/app.js"></script>
 </body>
 </html>
